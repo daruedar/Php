@@ -16,7 +16,7 @@
 		echo $row['producto'];echo "\t";
 		echo $row['ingrediente'];echo "\n";
 	}
-	//debo escribir nuevamente la consulta porque ya la recorrio toda de lo contraria no mostraria nada
+	//debo escribir nuevamente la consulta porque ya la recorrio toda de lo contrario no mostraria nada
 	$resultado= mysqli_query($link,"select * from producingre");
 	echo "\n Array Asociativo\n";
 		while($row=mysqli_fetch_array($resultado,MYSQLI_ASSOC)){
@@ -24,5 +24,13 @@
 		echo $row["producto"];echo "\t";
 		echo $row["ingrediente"];echo "\n";
 	}
+	
+	//IMPORTANTE NO OLVIDAR CERRAR LOS RECURSOS
+	
+/* free result set */
+mysqli_free_result($resultado);
+
+/* close connection */
+mysqli_close($link);
 	
 	?>
