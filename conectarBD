@@ -1,0 +1,28 @@
+<?php
+\\         TECNICA PROCEDIMENTAL
+	$link = mysqli_connect("localhost", "root", "", "diegorueda");
+	$resultado= mysqli_query($link,"select * from nametable");//nametable sin comillas
+	$numfilas=mysqli_num_rows($resultado);
+	$numcol=mysqli_num_fields($resultado);
+	//array numerico
+	while($row=mysqli_fetch_array($resultado,MYSQLI_NUM)){
+		echo $row[0];echo "\t";
+		echo $row[1];echo "\t";
+		echo $row[2];echo "\n";
+	}
+	//Array asociativo, debo ingresar los nombres de las columnas
+	while($row=mysqli_fetch_array($resultado,MYSQLI_ASSOC)){
+		echo $row['id'];echo "\t";
+		echo $row['producto'];echo "\t";
+		echo $row['ingrediente'];echo "\n";
+	}
+	//debo escribir nuevamente la consulta porque ya la recorrio toda de lo contraria no mostraria nada
+	$resultado= mysqli_query($link,"select * from producingre");
+	echo "\n Array Asociativo\n";
+		while($row=mysqli_fetch_array($resultado,MYSQLI_ASSOC)){
+		echo $row["id"];echo "\t";
+		echo $row["producto"];echo "\t";
+		echo $row["ingrediente"];echo "\n";
+	}
+	
+	?>
