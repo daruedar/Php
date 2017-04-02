@@ -1,0 +1,14 @@
+PHP A  JAVASCRIPT
+<?php $variablePHP = “contenido de la variable php”; ?>
+<script>
+var variableJS = “<?php echo $variablePHP; ?>” ;
+document.write(“VariableJS = ” + variableJS);
+</script> 
+
+//javascrip a  php
+
+<script> var variableJS = “contenido de la variable javascript”; </script>
+<?php
+$variablePHP = “<script> document.write(variableJS) </script>”;
+echo “variablePHP = “.$variablePHP;
+?> 
