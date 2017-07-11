@@ -1,2 +1,4 @@
 <?PHP
 session_start();//Inicia la session
+session_unset();//Borra todas  las VARIABLES DE SESSION creadas
+session_destroy();//Invalida la session actual por completo
