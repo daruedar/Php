@@ -12,3 +12,10 @@ document.write(“VariableJS = ” + variableJS);
 $variablePHP = “<script> document.write(variableJS) </script>”;
 echo “variablePHP = “.$variablePHP;
 ?> 
+
+//Pasar valores de un formulario a una pagina php mediante el metodo get
+<input step="1" min="0" max="6" name="nombre" value="1"  onChange="var id= this.name; var sal= this.value;sube(id,sal);">
+
+<script type="text/javascript">
+function sube( id,valor ){location.href='infoBD.php?id='+id+'&valor='+valor;}
+</script>
