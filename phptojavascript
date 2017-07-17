@@ -19,3 +19,22 @@ echo “variablePHP = “.$variablePHP;
 <script type="text/javascript">
 function sube( id,valor ){location.href='infoBD.php?id='+id+'&valor='+valor;}
 </script>
+
+//**************************LLAMAR FUNCIONES PHP DESDE JAVASCRIPT
+//Este archivo se almacena en un archivo php llamado infoBD.php,  basicamente  me lo envio a mi mismo
+<?php
+function saludar()
+	{echo ("Carpe Diem");
+	}
+if (isset($_GET['laura'])) {saludar();}
+
+?>
+<body>
+
+<button onclick="location.href='infoBD.php?laura=1';">Click para llamar a la funcion</button>
+
+</body>
+
+
+
+
