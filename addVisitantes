@@ -1,0 +1,43 @@
+include("micro/MisClases/Visitantes.php");
+$ip=$_SERVER['REMOTE_ADDR'];
+date_default_timezone_set('America/Bogota');
+$fecha=date("Y-m-d");
+$pagina='Index';
+$navegador=$_SERVER['HTTP_USER_AGENT'];;
+$hora=date('H:i:s');
+$prueba = new Visitantes($ip,$fecha,$pagina,$navegador,$hora);
+/*****************************************************************************/
+
+
+<?php
+//El objetivo de  esta clase es monitorear  a todos los visitantes de  todas  las  paginas
+//Para temas  de estadisticas
+
+class Visitantes{
+    private $saludo;
+    private $namebase;
+	private $servidor;
+	private $usuario;
+	private $pass;
+    
+    public function __construct($ip,$fecha,$pagina,$navegador,$hora){
+
+        $this->namebase="";
+	    $this->servidor="204.1";
+		$this->usuario="";
+		$this->pass="";
+		$this->addVisitante($ip,$fecha,$pagina,$navegador,$hora);
+    }
+     public  function reportar(){echo($this->saludo);}
+     
+      public function addVisitante($ip,$fecha,$pagina,$navegador,$hora){
+            	$enlace=mysqli_connect($this->servidor, $this->usuario, $this->pass,$this->namebase);
+                if(!$enlace)echo mysqli_connect_error();
+				$consulta="insert into visitantes(ip,fecha,pagina,navegador,hor)values('".$ip."','".$fecha."','".$pagina."','".$navegador."','".$hora."')";
+				$resultado= mysqli_query($enlace,$consulta);
+				mysqli_close($enlace);
+            }
+    
+}
+
+?>
