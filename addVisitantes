@@ -27,8 +27,14 @@ class Visitantes{
 		$this->usuario="";
 		$this->pass="";
 		$this->addVisitante($ip,$fecha,$pagina,$navegador,$hora);
+		$this->reportar($ip,$fecha,$pagina,$navegador,$hora);
     }
-     public  function reportar(){echo($this->saludo);}
+     public  function reportar(){
+     $cadena='Visitante en: '.$pagina;
+         $mensaje="IP:".$ip."\nFecha:".$fecha."\nPagina:".$pagina."\n Hora:".$hora;
+         mail('info@motos.com', $cadena, $mensaje);
+     
+     }
      
       public function addVisitante($ip,$fecha,$pagina,$navegador,$hora){
             	$enlace=mysqli_connect($this->servidor, $this->usuario, $this->pass,$this->namebase);
